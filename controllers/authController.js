@@ -86,6 +86,19 @@ export const login = async (req, res) => {
     })
   } catch (error) {
     console.error(error)
-    res.status(500).json({ error: 'Error en el login' })
+await newUser.save()
+res.status(201).json({
+  message: 'Usuario registrado correctamente',
+  user: {
+    id: newUser._id,
+    username: newUser.username,
+    photoUrl: newUser.photoUrl,
+    departamento: newUser.departamento,
+    provincia: newUser.provincia,
+    distrito: newUser.distrito,
+    email: newUser.email,
+  }
+})
+
   }
 }
